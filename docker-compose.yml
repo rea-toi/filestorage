@@ -1,0 +1,25 @@
+services:
+  storage_db:
+    image: postgres
+    env_file:
+      - .env
+    container_name: storage_db
+    volumes:
+      - storage_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  storage_api:
+    build: .
+    container_name: storage_api
+    volumes:
+      - .:/app
+    ports:
+      - "8100:8100"
+    env_file:
+      - .env
+    depends_on:
+      - storage_db
+
+volumes:
+  storage_data:
