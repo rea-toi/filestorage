@@ -2,7 +2,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sess
 from .config import settings
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from datetime import datetime
-from sqlalchemy import DateTime
+from sqlalchemy import DateTime, UUID
 import uuid
 
 engine = create_async_engine(
